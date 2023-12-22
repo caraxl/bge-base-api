@@ -1,1 +1,55 @@
 # bge-base-api
+# bge-api
+
+BGE-base Embeddings api by FastAPI
+## 0.下载模型文件
+- 模型文件存储路径：/home/app/model/bge-base-zh-v1.5
+- 使用git clone下载模型文件：git clone https://www.modelscope.cn/Xorbits/bge-base-zh-v1.5.git
+- 下载完毕后，需要安装git-lfs，代码如下：
+```shell
+cd /home/app/model/bge-base-zh-v1.5
+sudo apt-get install git-lfs
+git lfs install
+git lfs pull
+
+```
+
+## 1.构建镜像
+在Dockerfile所在路径执行下面命令创建镜像。
+```shell
+docker build -t bge-base-api:v1.0 .
+```
+## 2.启动镜像
+### CPU
+
+```sh
+docker run -d -p 6008:6008  --name bge-base-api2 bge-base-api:v1.0
+```
+
+### GPU
+
+> required nvidia-docker2
+
+```sh
+docker run -d -p 6008:6008 --gpus all --name bge-base-api2 bge-base-api:v1.0
+```
+
+## 3.测试服务
+
+```python
+import requests
+import json
+url = "http://localhost:6008/bge-base/post"
+data = {
+    "text":"你好，很高兴见到你",
+}
+response = requests.post(url, data=json.dumps(data),headers={'Content-Type': 'application/json'})
+# 打印响应
+if response.status_code == 200:
+    # 获取响应内容并打印
+    print("Response:", response.json())
+else:
+    print("Request failed with status code:", response.status_code)
+```
+
+
