@@ -51,5 +51,10 @@ if response.status_code == 200:
 else:
     print("Request failed with status code:", response.status_code)
 ```
+返回结果：
+```
+Response: {'text': '你好，很高兴见到你', 'embedding': [-0.01212986558675766, -0.009481322951614857, -0.0041494425386190414, ..., 0.011346199549734592, -0.0002315840683877468, -0.055745672434568405], 'request_time': '2023-12-22 18:07:44', 'response_time': '2023-12-22 18:07:44', 'code': 200}
+
+```
 
 
