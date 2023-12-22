@@ -1,7 +1,7 @@
 # bge-base-api
 # bge-api
 
-BGE-base Embeddings api by FastAPI
+BGE-base Embeddings api by FastAPI,python==3.8.0
 ## 0.下载模型文件
 - 模型文件存储路径：/home/app/model/bge-base-zh-v1.5
 - 使用git clone下载模型文件：git clone https://www.modelscope.cn/Xorbits/bge-base-zh-v1.5.git
