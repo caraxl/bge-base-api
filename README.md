@@ -23,7 +23,7 @@ docker build -t bge-base-api:v1.0 .
 ### CPU
 
 ```sh
-docker run -d -p 6008:6008  --name bge-base-api2 bge-base-api:v1.0
+docker run -d -p 6008:6008  --name bge-base-api bge-base-api:v1.0
 ```
 
 ### GPU
@@ -31,7 +31,7 @@ docker run -d -p 6008:6008  --name bge-base-api2 bge-base-api:v1.0
 > required nvidia-docker2
 
 ```sh
-docker run -d -p 6008:6008 --gpus all --name bge-base-api2 bge-base-api:v1.0
+docker run -d -p 6008:6008 --gpus all --name bge-base-api bge-base-api:v1.0
 ```
 
 ## 3.测试服务
