@@ -19,6 +19,39 @@ git lfs pull
 ```shell
 docker build -t bge-base-api:v1.0 .
 ```
+Dockerfile中拉取的ubuntu20.04-py38镜像构建脚本：
+```Dockerfile
+ROM ubuntu:20.04
+# 设置时区为你需要的时区为亚洲/上海
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+    apt-get install -y python3.8 && \
+    apt-get install -y python3-pip && \
+    apt-get install -y git && \
+    apt-get install -y vim
+ENV PATH="/usr/bin:${PATH}"
+# 设置默认 Python 版本
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+RUN pip3 install --upgrade pip
+# 安装依赖的python库
+RUN pip install pycryptodome && \
+pip install fastapi==0.95.1 && \
+pip install numpy==1.24.3 && \
+pip install pandas==2.0.1 && \
+pip install paramiko==2.7.2 && \
+pip install Pillow==9.5.0 && \
+pip install PyYAML==6.0.1 && \
+pip install requests==2.30.0 && \
+pip install scipy==1.10.1 && \
+pip install six==1.16.0 && \
+pip install urllib3==1.26.15 && \
+pip install uvicorn==0.22.0 && \
+pip install xlrd==2.0.1 && \
+pip install beautifulsoup4==4.12.2 
+
+```
 ## 2.启动镜像
 ### CPU
 
